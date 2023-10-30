@@ -95,6 +95,7 @@ function getPasswordOptions() {
  var upperCase = confirm("Password to contain Lowerase characters");
  var numeric = confirm("Password to contain numeric charaters");
  var specialCharacters = confirm("Password to contain special characters");
+ return { passwordLength, lowerCase, upperCase,numeric,specialCharacters};
 
 }
 
@@ -112,9 +113,15 @@ function getRandom(arr) {
 }
 
 // Function to generate password with user input
-function generatePassword() {  
-
-  
+function generatePassword() { 
+  var requirements = getPasswordOptions();
+  console.log(requirements);
+  if (!requirements.numeric && !requirements.lowerCase && !requirements.upperCase && !requirements.specialCharacters){
+    //password requirements not met
+    alert("One character type should be chosen please try again");
+  } else {
+    //generate password
+  } 
 }
 
 // Get references to the #generate element
@@ -130,4 +137,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
-getPasswordOptions();
+generatePassword();
