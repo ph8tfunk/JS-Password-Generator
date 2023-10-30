@@ -110,10 +110,11 @@ function getPasswordLength(){
 }
 // Function for getting a random element from an array
 function getRandom(arr) {
+  return arr[(Math.floor(math.random() * arr.length())) ];
 }
 
 // Function to generate password with user input
-function generatePassword() { 
+function passwordRequirements() { 
   var requirements = getPasswordOptions();
   console.log(requirements);
   if (!requirements.numeric && !requirements.lowerCase && !requirements.upperCase && !requirements.specialCharacters){
@@ -121,8 +122,20 @@ function generatePassword() {
     alert("One character type should be chosen please try again");
   } else {
     //generate password
+    generatePassword();
   } 
 }
+
+  function generatePassword(){
+    //loop for the length of the required password
+    //randomly select from each array of characters
+
+    for (let index = 0; index < pword.length; index++) {
+      // do something
+      
+    }
+
+  }
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
@@ -137,4 +150,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
-generatePassword();
+passwordRequirements();
