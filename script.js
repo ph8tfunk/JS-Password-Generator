@@ -91,6 +91,11 @@ var upperCasedCharacters = [
 // Function to prompt user for password options
 function getPasswordOptions() {
  var passwordLength = getPasswordLength();
+ var lowerCase = confirm("Password to contain Lowerase characters");
+ var upperCase = confirm("Password to contain Lowerase characters");
+ var numeric = confirm("Password to contain numeric charaters");
+ var specialCharacters = confirm("Password to contain special characters");
+
 }
 
 function getPasswordLength(){
@@ -108,6 +113,8 @@ function getRandom(arr) {
 
 // Function to generate password with user input
 function generatePassword() {  
+
+  
 }
 
 // Get references to the #generate element
