@@ -8,8 +8,9 @@ This website takes a JavaScript file with a hardcoded array of data and parses a
 
 ## Screenshot
 
+<img src="./assets/images/generatePassword.png" >
 
-
+<a href="https://ph8tfunk.github.io/JS-Password-Generator/">Password Generator</a>
 
 ## Installation
 
