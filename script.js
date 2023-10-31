@@ -90,6 +90,7 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
+  
   var passwordLength = getPasswordLength();
   var lowerCase = confirm("Password to contain Lowerase characters");
   var upperCase = confirm("Password to contain Lowerase characters");
@@ -107,11 +108,12 @@ function getPasswordOptions() {
 
 function getPasswordLength(){
   var pwordLength = parseInt(prompt("Enter length of password: between 8 and 128 characters"));
-  if (pwordLength < 8 || pwordLength > 128) {
-    getPasswordLength();
-  } else {
-    return pwordLength;
-  }
+  
+      if (pwordLength < 8 || pwordLength > 128 || isNaN(pwordLength) ){
+        getPasswordLength();
+      } else {
+        return pwordLength;
+      }
 
 }
 // Function for getting a random element from an array
