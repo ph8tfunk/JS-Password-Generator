@@ -90,12 +90,18 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
- var passwordLength = getPasswordLength();
- var lowerCase = confirm("Password to contain Lowerase characters");
- var upperCase = confirm("Password to contain Lowerase characters");
- var numeric = confirm("Password to contain numeric charaters");
- var specialCharacters = confirm("Password to contain special characters");
- return { passwordLength, lowerCase, upperCase,numeric,specialCharacters};
+  var passwordLength = getPasswordLength();
+  var lowerCase = confirm("Password to contain Lowerase characters");
+  var upperCase = confirm("Password to contain Lowerase characters");
+  var numeric = confirm("Password to contain numeric charaters");
+  var specialCharacters = confirm("Password to contain special characters");
+  var holder = [
+      {name: "PasswordLength", value: passwordLength},
+      {name: "LowerCase", value: lowerCase},
+      {name: "Uppercase", value: upperCase},
+      {name: "Numeric", value: numeric},
+      {name: "SpecialCharacters", value: specialCharacters}]
+  return holder; 
 
 }
 
@@ -117,14 +123,30 @@ function getRandom(arr) {
 function passwordRequirements() { 
   var requirements = getPasswordOptions();
   console.log(requirements);
-  if (!requirements.numeric && !requirements.lowerCase && !requirements.upperCase && !requirements.specialCharacters){
+  var valid = false;
+  requirements.forEach(element => {
+    
+    if (element.value)
+      valid = true;
+    });
+
+    if (!valid){
     //password requirements not met
     alert("One character type should be chosen please try again");
   } else {
-    //generate password
-    generatePassword();
+    //password requirements met proceed to generate password
+    isTrue(requirements);
+    //generatePassword();
   } 
 }
+
+  function isTrue(requirements){
+
+    // filter true!!
+    console.log(requirements.filter(function(element){
+      return element.value === true
+    }))
+  }
 
   function generatePassword(){
     //loop for the length of the required password
