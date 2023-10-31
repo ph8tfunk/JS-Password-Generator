@@ -190,5 +190,4 @@ function writePassword(pWord) {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener('click', writePassword);
-passwordRequirements();
+generateBtn.addEventListener('click', passwordRequirements);
