@@ -91,27 +91,37 @@ var upperCasedCharacters = [
 // Function to prompt user for password options
 function getPasswordOptions() {
   
-  var passwordLength = getPasswordLength();
-  var lowerCase = confirm("Password to contain Lowerase characters");
-  var upperCase = confirm("Password to contain Lowerase characters");
-  var numeric = confirm("Password to contain numeric charaters");
-  var special = confirm("Password to contain special characters");
+  while (true) {
+    var passwordLength = getPasswordLength();
+    if (!passwordLength === false){
+      break;
+    }
+  }
+  
+  console.log(passwordLength);
+  var lowerCase = confirm("Password to contain Lower Case Characters");
+  var upperCase = confirm("Password to contain Upper Case Characters");
+  var numeric = confirm("Password to contain Numeric Characters");
+  var special = confirm("Password to contain Special Characters");
   var holder = [
       {name: "PasswordLength", value: passwordLength},
       {name: "LowerCase", value: lowerCase},
       {name: "Uppercase", value: upperCase},
       {name: "Numeric", value: numeric},
       {name: "SpecialCharacters", value: special}]
+      console.log(holder);
   return holder; 
 
 }
 
 function getPasswordLength(){
+
   var pwordLength = parseInt(prompt("Enter length of password: between 8 and 128 characters"));
   
       if (pwordLength < 8 || pwordLength > 128 || isNaN(pwordLength) ){
-        getPasswordLength();
+        return false;
       } else {
+        console.log(pwordLength);
         return pwordLength;
       }
 
