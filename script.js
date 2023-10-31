@@ -94,13 +94,13 @@ function getPasswordOptions() {
   var lowerCase = confirm("Password to contain Lowerase characters");
   var upperCase = confirm("Password to contain Lowerase characters");
   var numeric = confirm("Password to contain numeric charaters");
-  var specialCharacters = confirm("Password to contain special characters");
+  var special = confirm("Password to contain special characters");
   var holder = [
       {name: "PasswordLength", value: passwordLength},
       {name: "LowerCase", value: lowerCase},
       {name: "Uppercase", value: upperCase},
       {name: "Numeric", value: numeric},
-      {name: "SpecialCharacters", value: specialCharacters}]
+      {name: "SpecialCharacters", value: special}]
   return holder; 
 
 }
@@ -116,13 +116,12 @@ function getPasswordLength(){
 }
 // Function for getting a random element from an array
 function getRandom(arr) {
-  return arr[(Math.floor(math.random() * arr.length())) ];
+  return arr[(Math.floor(Math.random() * arr.length)) ];
 }
 
 // Function to generate password with user input
 function passwordRequirements() { 
   var requirements = getPasswordOptions();
-  console.log(requirements);
   var valid = false;
   requirements.forEach(element => {
     
@@ -135,36 +134,56 @@ function passwordRequirements() {
     alert("One character type should be chosen please try again");
   } else {
     //password requirements met proceed to generate password
-    isTrue(requirements);
-    //generatePassword();
+    generatePassword(requirements);
   } 
 }
 
   function isTrue(requirements){
 
     // filter true!!
-    console.log(requirements.filter(function(element){
+    return (requirements.filter(function(element){
       return element.value === true
     }))
   }
 
-  function generatePassword(){
+  function generatePassword(requirements){
+
+    var option = isTrue(requirements);
+    // get only true choice for password requirements
+    var password = "";
+    
+    for (let index = 0; index < requirements[0].value; index++) {
+
     //loop for the length of the required password
     //randomly select from each array of characters
 
-    for (let index = 0; index < pword.length; index++) {
-      // do something
-      
-    }
+      var choice = (getRandom(option));
 
+      if (choice.name === "LowerCase") {
+        password += getRandom(lowerCasedCharacters);
+      }
+
+      if (choice.name === "Uppercase") {
+        password += getRandom(upperCasedCharacters);
+      }
+
+      if (choice.name === "Numeric") {
+        password += getRandom(numericCharacters);
+      }
+
+      if (choice.name === "SpecialCharacters") {
+        password += getRandom(specialCharacters);
+      }
+    }
+    writePassword(password);
   }
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
+function writePassword(pWord) {
+  var password = pWord;
   var passwordText = document.querySelector('#password');
 
   passwordText.value = password;
